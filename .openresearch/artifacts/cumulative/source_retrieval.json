@@ -1,0 +1,16 @@
+{
+  "url": "https://ar5iv.labs.arxiv.org/html/2601.23221",
+  "retrieved_at": "2026-07-30T07:22:08Z",
+  "user_agent": "explicit browser User-Agent used; value omitted from evidence because it is not scientifically material",
+  "sha256": "f6a147f01856d20e54047311773d98e90123be014ee8372b2fdac3c9f9c44835",
+  "anchors": {
+    "proposition_3_2": "S3.Thmtheorem2",
+    "bayes_equation_4": "S3.E4",
+    "majority_vote_equation_5": "S3.E5",
+    "condition_8": "S3.E8",
+    "condition_9": "S3.E9",
+    "theorem_3_4": "S3.Thmtheorem4",
+    "proposition_3_6": "S3.Thmtheorem6",
+    "theorem_4_1": "S4.Thmtheorem1"
+  }
+}

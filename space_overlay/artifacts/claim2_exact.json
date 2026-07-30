@@ -1,0 +1,315 @@
+{
+  "claim": "Theorem 3.4",
+  "verdict": "VERIFIED",
+  "model": {
+    "labels": "binary",
+    "sensitive_attribute": "binary",
+    "one_coin": true,
+    "conditional_annotator_independence": true,
+    "ground_positive_rates": [
+      0.4,
+      0.6
+    ],
+    "ground_dp": 0.19999999999999996,
+    "skill_sequence": "periodic repetition of each 16-value group block",
+    "skill_blocks": [
+      [
+        0.55,
+        0.9,
+        0.6,
+        0.85,
+        0.65,
+        0.8,
+        0.58,
+        0.88,
+        0.62,
+        0.83,
+        0.68,
+        0.78,
+        0.57,
+        0.92,
+        0.66,
+        0.76
+      ],
+      [
+        0.72,
+        0.56,
+        0.91,
+        0.64,
+        0.84,
+        0.59,
+        0.79,
+        0.67,
+        0.89,
+        0.61,
+        0.75,
+        0.93,
+        0.63,
+        0.82,
+        0.69,
+        0.77
+      ]
+    ],
+    "mv_margin": 0.05
+  },
+  "rows": [
+    {
+      "crowd_size": 3,
+      "pattern_count": 8,
+      "group_rows": [
+        {
+          "group": 0,
+          "prior": 0.4,
+          "mv_positive_rate": 0.4458,
+          "bayes_positive_rate": 0.42,
+          "mv_error_rate": 0.22899999999999993,
+          "bayes_error_rate": 0.09999999999999998
+        },
+        {
+          "group": 1,
+          "prior": 0.6,
+          "mv_positive_rate": 0.5668351999999999,
+          "bayes_positive_rate": 0.582,
+          "mv_error_rate": 0.16582399999999997,
+          "bayes_error_rate": 0.08999999999999998
+        }
+      ],
+      "ground_dp": 0.19999999999999996,
+      "mv_dp": 0.1210351999999999,
+      "bayes_dp": 0.16199999999999998,
+      "mv_gap": 0.07896480000000006,
+      "bayes_gap": 0.03799999999999998,
+      "decision_disagreement_pattern_count": 4,
+      "decision_disagreement_probability": 0.16703999999999997,
+      "mv_condition_values": [
+        1.1,
+        1.1
+      ],
+      "bayes_condition_partial_sums": [
+        0.17250000000000004,
+        0.22010000000000002
+      ]
+    },
+    {
+      "crowd_size": 5,
+      "pattern_count": 32,
+      "group_rows": [
+        {
+          "group": 0,
+          "prior": 0.4,
+          "mv_positive_rate": 0.42746149999999994,
+          "bayes_positive_rate": 0.39254999999999995,
+          "mv_error_rate": 0.13730749999999994,
+          "bayes_error_rate": 0.08328999999999996
+        },
+        {
+          "group": 1,
+          "prior": 0.6,
+          "mv_positive_rate": 0.5780895334399999,
+          "bayes_positive_rate": 0.5972082022399999,
+          "mv_error_rate": 0.10955233279999999,
+          "bayes_error_rate": 0.0678480128
+        }
+      ],
+      "ground_dp": 0.19999999999999996,
+      "mv_dp": 0.15062803343999998,
+      "bayes_dp": 0.20465820223999998,
+      "mv_gap": 0.04937196655999998,
+      "bayes_gap": 0.00465820224000002,
+      "decision_disagreement_pattern_count": 11,
+      "decision_disagreement_probability": 0.08455107065599998,
+      "mv_condition_values": [
+        1.1,
+        1.1
+      ],
+      "bayes_condition_partial_sums": [
+        0.31750000000000006,
+        0.3553
+      ]
+    },
+    {
+      "crowd_size": 8,
+      "pattern_count": 256,
+      "group_rows": [
+        {
+          "group": 0,
+          "prior": 0.4,
+          "mv_positive_rate": 0.469713388,
+          "bayes_positive_rate": 0.39685604879999997,
+          "mv_error_rate": 0.09472318319999998,
+          "bayes_error_rate": 0.03444793552
+        },
+        {
+          "group": 1,
+          "prior": 0.6,
+          "mv_positive_rate": 0.6395682324010239,
+          "bayes_positive_rate": 0.6038518114892544,
+          "mv_error_rate": 0.08820550788113918,
+          "bayes_error_rate": 0.04732700827802111
+        }
+      ],
+      "ground_dp": 0.19999999999999996,
+      "mv_dp": 0.16985484440102389,
+      "bayes_dp": 0.2069957626892544,
+      "mv_gap": 0.03014515559897607,
+      "bayes_gap": 0.006995762689254448,
+      "decision_disagreement_pattern_count": 108,
+      "decision_disagreement_probability": 0.07607007874063358,
+      "mv_condition_values": [
+        1.1,
+        1.1
+      ],
+      "bayes_condition_partial_sums": [
+        0.5583,
+        0.47640000000000005
+      ]
+    },
+    {
+      "crowd_size": 12,
+      "pattern_count": 4096,
+      "group_rows": [
+        {
+          "group": 0,
+          "prior": 0.4,
+          "mv_positive_rate": 0.43543497977638246,
+          "bayes_positive_rate": 0.3995192702908351,
+          "mv_error_rate": 0.05038850486303037,
+          "bayes_error_rate": 0.017179730472149782
+        },
+        {
+          "group": 1,
+          "prior": 0.6,
+          "mv_positive_rate": 0.6139452762540049,
+          "bayes_positive_rate": 0.6002278993587978,
+          "mv_error_rate": 0.029294531116536997,
+          "bayes_error_rate": 0.009889366216045858
+        }
+      ],
+      "ground_dp": 0.19999999999999996,
+      "mv_dp": 0.1785102964776224,
+      "bayes_dp": 0.20070862906796272,
+      "mv_gap": 0.021489703522377557,
+      "bayes_gap": 0.0007086290679627627,
+      "decision_disagreement_pattern_count": 1618,
+      "decision_disagreement_probability": 0.03360342200541671,
+      "mv_condition_values": [
+        1.1,
+        1.1
+      ],
+      "bayes_condition_partial_sums": [
+        0.7924,
+        0.8880000000000001
+      ]
+    },
+    {
+      "crowd_size": 16,
+      "pattern_count": 65536,
+      "group_rows": [
+        {
+          "group": 0,
+          "prior": 0.4,
+          "mv_positive_rate": 0.41859186232403667,
+          "bayes_positive_rate": 0.3998530703202807,
+          "mv_error_rate": 0.026903000701203446,
+          "bayes_error_rate": 0.006536286381879865
+        },
+        {
+          "group": 1,
+          "prior": 0.6,
+          "mv_positive_rate": 0.6072890390129819,
+          "bayes_positive_rate": 0.6001131227258496,
+          "mv_error_rate": 0.016705012153085456,
+          "bayes_error_rate": 0.005353547106655124
+        }
+      ],
+      "ground_dp": 0.19999999999999996,
+      "mv_dp": 0.18869717668894526,
+      "bayes_dp": 0.20026005240556888,
+      "mv_gap": 0.0113028233110547,
+      "bayes_gap": 0.0002600524055689224,
+      "decision_disagreement_pattern_count": 25236,
+      "decision_disagreement_probability": 0.018984189600386794,
+      "mv_condition_values": [
+        1.1,
+        1.1
+      ],
+      "bayes_condition_partial_sums": [
+        1.0669000000000002,
+        1.1162999999999998
+      ]
+    }
+  ],
+  "proof_audit": {
+    "certificate": "Theorem 3.4 symbolic derivation audit",
+    "source_steps": [
+      {
+        "id": "indicator",
+        "statement": "|1{Yhat=1}-1{Y=1}| <= 1{Yhat!=Y}",
+        "mechanical_check": "complete Boolean domain",
+        "truth_table": [
+          {
+            "prediction": 0,
+            "truth": 0,
+            "indicator_difference": 0,
+            "error_indicator": 0,
+            "holds": true
+          },
+          {
+            "prediction": 0,
+            "truth": 1,
+            "indicator_difference": 1,
+            "error_indicator": 1,
+            "holds": true
+          },
+          {
+            "prediction": 1,
+            "truth": 0,
+            "indicator_difference": 1,
+            "error_indicator": 1,
+            "holds": true
+          },
+          {
+            "prediction": 1,
+            "truth": 1,
+            "indicator_difference": 0,
+            "error_indicator": 0,
+            "holds": true
+          }
+        ],
+        "passed": true
+      },
+      {
+        "id": "conditional_expectation",
+        "statement": "|P(Yhat=1|A=a)-P(Y=1|A=a)| <= P(Yhat!=Y|A=a)",
+        "rule": "expectation preserves pointwise inequalities; |E Z| <= E|Z|",
+        "passed": true
+      },
+      {
+        "id": "dp_triangle",
+        "statement": "|DP(Yhat)-DP(Y)| <= sum_a P(Yhat!=Y|A=a)",
+        "rule": "substitute the DP definition and apply the triangle inequality",
+        "passed": true
+      },
+      {
+        "id": "gao_substitution",
+        "statement": "P(Yhat!=Y|A=a) <= E[e^{-R K_phi(a,X)}|A=a]",
+        "rule": "condition and integrate Theorem 3.1's pointwise bound",
+        "passed": true
+      },
+      {
+        "id": "dominated_convergence",
+        "statement": "if e^{-R K_phi(A,X)} -> 0 a.s. and lies in [0,1], its conditional expectation -> 0",
+        "rule": "Dominated Convergence Theorem with dominating function 1",
+        "passed": true
+      },
+      {
+        "id": "conditions",
+        "statement": "Lemma 3.3 Equations (8)/(9) provide the a.s. limit required by the previous step",
+        "rule": "direct use of the paper's separately stated lemma",
+        "passed": true
+      }
+    ],
+    "scope": "The checker mechanically exhausts the only finite logical atom and validates the derivation graph. DCT and Lemma 3.3 are cited mathematical rules, not re-proved by a proof assistant."
+  },
+  "limitations": "Exact finite corroboration ends at R=16 for Bayes because it enumerates 2^R patterns. The asymptotic conclusion rests on the independently reconstructed derivation from Theorem 3.1, Lemma 3.3, and dominated convergence."
+}

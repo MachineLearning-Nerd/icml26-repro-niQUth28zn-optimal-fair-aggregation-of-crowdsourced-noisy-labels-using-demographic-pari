@@ -1,0 +1,5 @@
+{
+  "mutation": "replace the positive influence constant eta by zero",
+  "violation_count": 4,
+  "failed_as_expected": true
+}

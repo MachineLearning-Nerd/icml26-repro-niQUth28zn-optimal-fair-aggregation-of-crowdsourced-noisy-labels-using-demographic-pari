@@ -1,0 +1,40 @@
+{
+  "space_id": "DineshAI/niQUth28zn",
+  "verdict": {
+    "space_id": "DineshAI/niQUth28zn",
+    "orid": "niQUth28zn",
+    "paper_title": "Optimal Fair Aggregation of Crowdsourced Noisy Labels using Demographic Parity Constraints",
+    "sha": "eee6b5ec719b769b952bd978850bffba2ba590c3",
+    "judged_at": "2026-07-30T04:35:37+00:00",
+    "model": "zai-org/GLM-5.2",
+    "claims": [
+      {
+        "claim": "The demographic parity gap of majority-vote aggregated labels is bounded above by an exponentially decaying term in the number of annotators R, of the form sum over groups a of E[e^{-R K_phi(a,X)}] (Proposition 3.2).",
+        "verdict": "verified",
+        "evidence": "Monte Carlo with 60k samples shows DP gap decaying exponentially in R: gaps [0.053, 0.0277, 0.0122, 0.0031, 0.0002, 0.0004] with fitted log-slope -0.311, consistent with the theoretical K_MV=0.263 bound. The error-rate slope (-0.289) matches the closed-form exponent, directly supporting Proposition 3.2's exponential decay prediction."
+      },
+      {
+        "claim": "Under interpretable conditions on annotator skill, both Majority Vote and Bayesian aggregation are shown to achieve asymptotically unbiased fairness gaps relative to ground-truth labels as crowd size grows (Theorem 3.4).",
+        "verdict": "toy",
+        "evidence": "Both MV and Bayesian are tested only with homogeneous skills (p=0.75), where the Bayesian log-likelihood-ratio aggregator is mathematically identical to majority vote, producing identical gaps (0.0872→0.0021). The claim that 'both' methods achieve asymptotic unbiasedness is not independently verified for Bayesian aggregation in any regime where it differs from MV."
+      },
+      {
+        "claim": "For majority voting with R annotators, the aggregated fairness gap is bounded by epsilon(R) times the sum of individual annotators' fairness gaps, showing majority voting can amplify rather than average out bias (Proposition 3.6).",
+        "verdict": "verified",
+        "evidence": "The Proposition 3.6 bound |DP(MV)| ≤ η·min(V)^{-1/2}·Σ|DP_r| with η=0.4688 is directly checked at R=6,10,20,40 and holds at every R (e.g., R=6: 0.206 ≤ 0.262; R=40: 0.299 ≤ 0.581), with biased annotators showing the bound grows with R, demonstrating the bias-accumulation behavior."
+      },
+      {
+        "claim": "Convergence of the fairness gap to the ground-truth value requires a majority of annotators to have skill exceeding 0.5 plus a margin epsilon; without this, majority voting fails to converge (Section 3, following Proposition 3.6).",
+        "verdict": "verified",
+        "evidence": "Four homogeneous-skill cases test the competent-majority condition: p=0.75 and p=0.65 meet the condition and converge (gaps 0.005, 0.0001), while p=0.50 and p=0.40 fail the condition and do not converge (gaps 0.303, 0.548). The condition correctly predicts convergence vs. non-convergence in all 4 cases, directly supporting the necessity claim."
+      },
+      {
+        "claim": "FairCrowd, a post-processing method, enforces a strict epsilon-fairness constraint on the output of any aggregation rule while provably bounding the resulting accuracy loss (Theorem 4.1).",
+        "verdict": "verified",
+        "evidence": "FairCrowd achieves |DP| ≤ ε at all tested ε levels (0.02, 0.05, 0.10, 0.20) with accuracy within 1.5% of the brute-force optimal ε-fair classifier found over a 121×121 per-group threshold grid (loss gaps 0.0039–0.0056), demonstrating both strict fairness enforcement and near-minimal accuracy loss as claimed by Theorem 4.1."
+      }
+    ],
+    "overall": "The logbook provides clean-room Monte Carlo simulations (40k–60k samples, one-coin annotator model) that numerically verify the exponential DP-gap decay (Claim 1), the Proposition 3.6 sharp bound (Claim 3), the competent-majority necessity condition (Claim 4), and FairCrowd's minimal-loss ε-fairness (Claim 5). Claim 2 is only partially addressed because the Bayesian aggregator is identical to majority vote under the tested homogeneous-skill setting, so the two methods are not independently verified.",
+    "quality": "medium"
+  }
+}

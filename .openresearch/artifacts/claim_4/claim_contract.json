@@ -1,0 +1,7 @@
+{
+  "claim": "Condition 8 interpretation following Lemma 3.3",
+  "anchor": "S3.E8 and the paragraph following Lemma 3.3",
+  "source_scope": "A sufficient guarantee; for adversarial lower bound C=0 it requires g1,R/R > 1/(1+2 epsilon)",
+  "finite_regression_acceptance": "condition_met equals finite convergence classification in all four cases",
+  "verdict": "VERIFIED"
+}

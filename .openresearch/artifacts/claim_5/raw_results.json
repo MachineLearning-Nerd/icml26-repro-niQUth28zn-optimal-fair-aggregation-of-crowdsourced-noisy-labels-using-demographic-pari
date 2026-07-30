@@ -1,0 +1,43 @@
+{
+  "claim": "C5",
+  "anchor": "Theorem 4.1",
+  "status": "VERIFIED",
+  "metrics": {
+    "rows": [
+      {
+        "epsilon": 0.02,
+        "beta": 0.07550000000000012,
+        "dp_gap": 0.019749863976508353,
+        "accuracy": 0.62375,
+        "grid_optimal_accuracy": 0.626625,
+        "accuracy_gap": 0.002874999999999961
+      },
+      {
+        "epsilon": 0.05,
+        "beta": 0.06320000000000014,
+        "dp_gap": 0.049845223371678404,
+        "accuracy": 0.6268,
+        "grid_optimal_accuracy": 0.6289,
+        "accuracy_gap": 0.0020999999999999908
+      },
+      {
+        "epsilon": 0.1,
+        "beta": 0.04100000000000015,
+        "dp_gap": 0.09999194394127131,
+        "accuracy": 0.630875,
+        "grid_optimal_accuracy": 0.633375,
+        "accuracy_gap": 0.0025000000000000577
+      },
+      {
+        "epsilon": 0.2,
+        "beta": 0.0,
+        "dp_gap": 0.193383174763344,
+        "accuracy": 0.635375,
+        "grid_optimal_accuracy": 0.639925,
+        "accuracy_gap": 0.004549999999999943
+      }
+    ],
+    "unconstrained_dp_gap": 0.193383174763344
+  },
+  "limitations": "Historical Monte Carlo baseline uses a 121x121 threshold grid, not an exact LP."
+}

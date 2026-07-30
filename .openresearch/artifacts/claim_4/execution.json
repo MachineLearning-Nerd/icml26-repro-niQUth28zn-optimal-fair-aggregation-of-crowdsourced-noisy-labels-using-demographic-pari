@@ -1,0 +1,14 @@
+{
+  "command": "uv run --frozen python repro/run_all.py",
+  "environment": "uv.lock; Python 3.12.11",
+  "git_sha": "10451115e7ef0ba33a07b7b1ea20a5aaca959e8f",
+  "orx_run_id": "6ce67aaa-3b66-4405-9b80-9f041841b194",
+  "backend": "local",
+  "estimated_required_cores": 1,
+  "estimated_runtime_seconds": [45, 60],
+  "logical_cpu_count_visible": 8,
+  "affinity_cpu_count": null,
+  "implementation_threads": 1,
+  "runtime_seconds": 41.00731904100394,
+  "seeds": [1, 2, 3, 5]
+}

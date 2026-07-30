@@ -1,0 +1,231 @@
+{
+  "paper": "2601.23221",
+  "baseline_space_revision": "eee6b5ec719b769b952bd978850bffba2ba590c3",
+  "claims": [
+    {
+      "claim": "C1",
+      "anchor": "Proposition 3.2",
+      "status": "VERIFIED",
+      "metrics": {
+        "crowd_sizes": [
+          3,
+          5,
+          8,
+          12,
+          20,
+          30
+        ],
+        "errors": [
+          0.08496666666666666,
+          0.04521666666666667,
+          0.0231,
+          0.0073,
+          0.0005833333333333334,
+          3.3333333333333335e-05
+        ],
+        "dp_gaps": [
+          0.05106666666666676,
+          0.030833333333333435,
+          0.018266666666666764,
+          0.009866666666666746,
+          0.004833333333333412,
+          0.004533333333333389
+        ],
+        "theoretical_exponent": 0.26347747725220333,
+        "error_log_slope": -0.2908943121524033,
+        "gap_log_slope": -0.17910505038388344
+      },
+      "limitations": "Historical Monte Carlo baseline; the tail is limited by sampling noise."
+    },
+    {
+      "claim": "C2",
+      "anchor": "Theorem 3.4",
+      "status": "VERIFIED",
+      "metrics": {
+        "raw_json": "outputs/claim2_exact.json",
+        "raw_csv": "outputs/claim2_exact.csv",
+        "final_mv_gap": 0.0113028233110547,
+        "final_bayes_gap": 0.0002600524055689224,
+        "decision_disagreement_probability": 0.018984189600386794,
+        "independent_checker_exit_code": 0,
+        "negative_controls": {
+          "homogeneous": {
+            "exit_code": 1,
+            "output": {
+              "control": "homogeneous equal-skill distinctness",
+              "expected_failure": "Bayes collapses to MV and cannot independently verify both methods",
+              "bayes_identical_to_mv": true,
+              "status": "FAIL_AS_EXPECTED"
+            },
+            "failed_as_expected": true
+          },
+          "no-signal": {
+            "exit_code": 1,
+            "output": {
+              "control": "Bayesian condition violation at p=0.5",
+              "expected_failure": "Equation (9) sum is zero and a nonzero ground-truth DP is not recovered",
+              "condition_9_partial_sum": 0.0,
+              "ground_dp": 0.2,
+              "aggregate_dp": 0.0,
+              "gap_for_every_crowd_size": 0.2,
+              "status": "FAIL_AS_EXPECTED"
+            },
+            "failed_as_expected": true
+          }
+        }
+      },
+      "limitations": "Exact finite corroboration ends at R=16 for Bayes because it enumerates 2^R patterns. The asymptotic conclusion rests on the independently reconstructed derivation from Theorem 3.1, Lemma 3.3, and dominated convergence."
+    },
+    {
+      "claim": "C3",
+      "anchor": "Proposition 3.6",
+      "status": "VERIFIED",
+      "metrics": {
+        "rows": [
+          {
+            "crowd_size": 6,
+            "observed_dp": 0.18271666813017007,
+            "bound": 0.2580584293214498,
+            "epsilon_r": 0.38672165673539277,
+            "individual_gap_sum": 0.6672975894339984,
+            "holds": true
+          },
+          {
+            "crowd_size": 10,
+            "observed_dp": 0.22284443589700337,
+            "bound": 0.3367677865974626,
+            "epsilon_r": 0.29990874100054543,
+            "individual_gap_sum": 1.1229008713582314,
+            "holds": true
+          },
+          {
+            "crowd_size": 20,
+            "observed_dp": 0.24550758402975004,
+            "bound": 0.3728002032218063,
+            "epsilon_r": 0.21128305066742514,
+            "individual_gap_sum": 1.7644586352012726,
+            "holds": true
+          },
+          {
+            "crowd_size": 40,
+            "observed_dp": 0.29182205245682885,
+            "bound": 0.5769455178762899,
+            "epsilon_r": 0.14948019731497683,
+            "individual_gap_sum": 3.859678594486871,
+            "holds": true
+          }
+        ],
+        "eta": 0.4688
+      },
+      "limitations": "Historical Monte Carlo regression of the judged evidence."
+    },
+    {
+      "claim": "C4",
+      "anchor": "Condition (8), Lemma 3.3",
+      "status": "VERIFIED",
+      "metrics": {
+        "rows": [
+          {
+            "case": "competent",
+            "skill": 0.75,
+            "crowd_size": 40,
+            "condition_value": 1.5,
+            "condition_met": true,
+            "gap": 0.003952185632251137,
+            "converged": true
+          },
+          {
+            "case": "weak_competent",
+            "skill": 0.65,
+            "crowd_size": 60,
+            "condition_value": 1.3,
+            "condition_met": true,
+            "gap": 0.002162740732059909,
+            "converged": true
+          },
+          {
+            "case": "random",
+            "skill": 0.5,
+            "crowd_size": 40,
+            "condition_value": 0.0,
+            "condition_met": false,
+            "gap": 0.29906715106058834,
+            "converged": false
+          },
+          {
+            "case": "adversarial",
+            "skill": 0.4,
+            "crowd_size": 40,
+            "condition_value": 0.0,
+            "condition_met": false,
+            "gap": 0.5390190241806321,
+            "converged": false
+          }
+        ]
+      },
+      "limitations": "Historical homogeneous-skill Monte Carlo regression."
+    },
+    {
+      "claim": "C5",
+      "anchor": "Theorem 4.1",
+      "status": "VERIFIED",
+      "metrics": {
+        "rows": [
+          {
+            "epsilon": 0.02,
+            "beta": 0.07550000000000012,
+            "dp_gap": 0.019749863976508353,
+            "accuracy": 0.62375,
+            "grid_optimal_accuracy": 0.626625,
+            "accuracy_gap": 0.002874999999999961
+          },
+          {
+            "epsilon": 0.05,
+            "beta": 0.06320000000000014,
+            "dp_gap": 0.049845223371678404,
+            "accuracy": 0.6268,
+            "grid_optimal_accuracy": 0.6289,
+            "accuracy_gap": 0.0020999999999999908
+          },
+          {
+            "epsilon": 0.1,
+            "beta": 0.04100000000000015,
+            "dp_gap": 0.09999194394127131,
+            "accuracy": 0.630875,
+            "grid_optimal_accuracy": 0.633375,
+            "accuracy_gap": 0.0025000000000000577
+          },
+          {
+            "epsilon": 0.2,
+            "beta": 0.0,
+            "dp_gap": 0.193383174763344,
+            "accuracy": 0.635375,
+            "grid_optimal_accuracy": 0.639925,
+            "accuracy_gap": 0.004549999999999943
+          }
+        ],
+        "unconstrained_dp_gap": 0.193383174763344
+      },
+      "limitations": "Historical Monte Carlo baseline uses a 121x121 threshold grid, not an exact LP."
+    }
+  ],
+  "metadata": {
+    "git_sha": "10451115e7ef0ba33a07b7b1ea20a5aaca959e8f",
+    "python": "3.12.11",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "logical_cpu_count": 8,
+    "affinity_cpu_count": null,
+    "estimated_required_cores": 1,
+    "selected_compute": "recorded by orx run metadata",
+    "runtime_seconds": 41.00731904100394,
+    "seeds": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "environment": "uv.lock, Python 3.12"
+  },
+  "all_regressions_pass": true,
+  "claim_2_verified": true
+}

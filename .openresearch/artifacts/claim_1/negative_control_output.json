@@ -1,0 +1,5 @@
+{
+  "mutation": "replace exp(-R K) by the too-small exp(-2 R K)",
+  "violation_count": 4,
+  "failed_as_expected": true
+}

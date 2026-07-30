@@ -1,0 +1,5 @@
+{
+  "mutation": "force beta=0 under epsilon=0.05",
+  "unconstrained_dp_gap": 0.193383174763344,
+  "failed_as_expected": true
+}

@@ -1,0 +1,43 @@
+{
+  "claim": "C3",
+  "anchor": "Proposition 3.6",
+  "status": "VERIFIED",
+  "metrics": {
+    "rows": [
+      {
+        "crowd_size": 6,
+        "observed_dp": 0.18271666813017007,
+        "bound": 0.2580584293214498,
+        "epsilon_r": 0.38672165673539277,
+        "individual_gap_sum": 0.6672975894339984,
+        "holds": true
+      },
+      {
+        "crowd_size": 10,
+        "observed_dp": 0.22284443589700337,
+        "bound": 0.3367677865974626,
+        "epsilon_r": 0.29990874100054543,
+        "individual_gap_sum": 1.1229008713582314,
+        "holds": true
+      },
+      {
+        "crowd_size": 20,
+        "observed_dp": 0.24550758402975004,
+        "bound": 0.3728002032218063,
+        "epsilon_r": 0.21128305066742514,
+        "individual_gap_sum": 1.7644586352012726,
+        "holds": true
+      },
+      {
+        "crowd_size": 40,
+        "observed_dp": 0.29182205245682885,
+        "bound": 0.5769455178762899,
+        "epsilon_r": 0.14948019731497683,
+        "individual_gap_sum": 3.859678594486871,
+        "holds": true
+      }
+    ],
+    "eta": 0.4688
+  },
+  "limitations": "Historical Monte Carlo regression of the judged evidence."
+}

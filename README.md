@@ -17,6 +17,7 @@ an audited symbolic derivation; it does not turn finite numerics into proof of a
 limit.
 
 - [Illustrated technical report](reports/faircrowd/report.md)
+- [Release forecast, provenance, and gates](reports/faircrowd/release_report.md)
 - [Self-contained marimo tutorial](notebooks/faircrowd_claim2.py)
 - [Claim contract and raw evidence](.openresearch/artifacts/claim_2/)
 - [Paper](https://arxiv.org/abs/2601.23221)
@@ -28,6 +29,8 @@ limit.
 | `main` | Public landing page, report, and notebook | Not run as an experiment (publication surface) | Presentation only | — |
 | [Judged Monte Carlo baseline](https://github.com/MachineLearning-Nerd/icml26-repro-niQUth28zn-optimal-fair-aggregation-of-crowdsourced-noisy-labels-using-demographic-pari/tree/orx/judged-monte-carlo-baseline) | Freeze the judged evidence and criticism | `uv run --frozen python repro/run_all.py` | C1/C3/C4/C5 pass; C2 blocked | Local CPU, 30 s |
 | [Exact heterogeneous Bayes verifier](https://github.com/MachineLearning-Nerd/icml26-repro-niQUth28zn-optimal-fair-aggregation-of-crowdsourced-noisy-labels-using-demographic-pari/tree/orx/exact-heterogeneous-bayes-verifier) | Exercise Bayes independently, audit the limit derivation, add controls | `uv run --frozen python repro/run_all.py` | All five cumulative checks pass | Local CPU, 45 s |
+| [Evaluator-visible candidate](https://github.com/MachineLearning-Nerd/icml26-repro-niQUth28zn-optimal-fair-aggregation-of-crowdsourced-noisy-labels-using-demographic-pari/tree/orx/evaluator-visible-release-candidate) | Add independent cumulative checking, per-claim controls, report, and notebook | `uv run --frozen python repro/run_all.py` | All five checks pass; cumulative checker passes; controls fail as intended | Local CPU, 47 s |
+| [Release manifest and blind audit](https://github.com/MachineLearning-Nerd/icml26-repro-niQUth28zn-optimal-fair-aggregation-of-crowdsourced-noisy-labels-using-demographic-pari/tree/orx/release-manifest-and-blind-audit) | Additive Space overlay, manifests, and evaluator-blind traversal | `uv run --frozen python repro/run_all.py` | Pending final unchanged-command regression | Local CPU, estimated under 60 s |
 
 ## Reproduce
 

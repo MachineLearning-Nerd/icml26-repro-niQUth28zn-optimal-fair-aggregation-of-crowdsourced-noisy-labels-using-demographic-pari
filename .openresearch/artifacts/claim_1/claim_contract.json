@@ -1,0 +1,12 @@
+{
+  "claim": "Proposition 3.2",
+  "anchor": "S3.Thmtheorem2 / Equation 7",
+  "quantifiers": "For every positive integer R and phi in {Bayes, Majority Vote}",
+  "statement": "|DP(Yhat_R_phi)-DP(Y)| <= sum_a E[exp(-R K_phi(a,X)) | A=a]",
+  "finite_regression_acceptance": {
+    "error_log_slope": "< -0.7 * K_MV",
+    "dp_gap_log_slope": "< -0.15",
+    "final_gap": "< initial_gap / 5"
+  },
+  "verdict": "VERIFIED"
+}

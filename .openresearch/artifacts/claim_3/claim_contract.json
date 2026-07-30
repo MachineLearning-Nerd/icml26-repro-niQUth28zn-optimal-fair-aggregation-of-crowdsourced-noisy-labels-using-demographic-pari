@@ -1,0 +1,8 @@
+{
+  "claim": "Proposition 3.6",
+  "anchor": "S3.Thmtheorem6 / Equation 10",
+  "quantifiers": "For every R >= 1",
+  "statement": "DP(MV) <= epsilon(R) * sum_r DP(noisy_label_r), eta approximately 0.4688",
+  "finite_regression_acceptance": "observed_dp <= computed_bound + 0.01 at R=6,10,20,40",
+  "verdict": "VERIFIED"
+}

@@ -1,0 +1,35 @@
+{
+  "claim": "C1",
+  "anchor": "Proposition 3.2",
+  "status": "VERIFIED",
+  "metrics": {
+    "crowd_sizes": [
+      3,
+      5,
+      8,
+      12,
+      20,
+      30
+    ],
+    "errors": [
+      0.08496666666666666,
+      0.04521666666666667,
+      0.0231,
+      0.0073,
+      0.0005833333333333334,
+      0.000033333333333333335
+    ],
+    "dp_gaps": [
+      0.05106666666666676,
+      0.030833333333333435,
+      0.018266666666666764,
+      0.009866666666666746,
+      0.004833333333333412,
+      0.004533333333333389
+    ],
+    "theoretical_exponent": 0.26347747725220333,
+    "error_log_slope": -0.2908943121524033,
+    "gap_log_slope": -0.17910505038388344
+  },
+  "limitations": "Historical Monte Carlo baseline; the tail is limited by sampling noise."
+}

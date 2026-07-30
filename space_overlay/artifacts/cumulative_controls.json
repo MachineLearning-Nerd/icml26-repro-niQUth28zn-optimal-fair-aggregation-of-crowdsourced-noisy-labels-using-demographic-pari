@@ -1,0 +1,50 @@
+{
+  "status": "FAIL_AS_EXPECTED",
+  "controls": {
+    "C1": {
+      "mutation": "replace exp(-R K) by the too-small exp(-2 R K)",
+      "violation_count": 4,
+      "failed_as_expected": true
+    },
+    "C2": {
+      "homogeneous": {
+        "exit_code": 1,
+        "output": {
+          "control": "homogeneous equal-skill distinctness",
+          "expected_failure": "Bayes collapses to MV and cannot independently verify both methods",
+          "bayes_identical_to_mv": true,
+          "status": "FAIL_AS_EXPECTED"
+        },
+        "failed_as_expected": true
+      },
+      "no-signal": {
+        "exit_code": 1,
+        "output": {
+          "control": "Bayesian condition violation at p=0.5",
+          "expected_failure": "Equation (9) sum is zero and a nonzero ground-truth DP is not recovered",
+          "condition_9_partial_sum": 0.0,
+          "ground_dp": 0.2,
+          "aggregate_dp": 0.0,
+          "gap_for_every_crowd_size": 0.2,
+          "status": "FAIL_AS_EXPECTED"
+        },
+        "failed_as_expected": true
+      }
+    },
+    "C3": {
+      "mutation": "replace the positive influence constant eta by zero",
+      "violation_count": 4,
+      "failed_as_expected": true
+    },
+    "C4": {
+      "mutation": "declare the p=0.5 random crowd convergent",
+      "observed_gap": 0.29906715106058834,
+      "failed_as_expected": true
+    },
+    "C5": {
+      "mutation": "force beta=0 under epsilon=0.05",
+      "unconstrained_dp_gap": 0.193383174763344,
+      "failed_as_expected": true
+    }
+  }
+}

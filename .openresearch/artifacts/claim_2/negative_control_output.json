@@ -1,0 +1,25 @@
+{
+  "homogeneous": {
+    "exit_code": 1,
+    "output": {
+      "control": "homogeneous equal-skill distinctness",
+      "expected_failure": "Bayes collapses to MV and cannot independently verify both methods",
+      "bayes_identical_to_mv": true,
+      "status": "FAIL_AS_EXPECTED"
+    },
+    "failed_as_expected": true
+  },
+  "no-signal": {
+    "exit_code": 1,
+    "output": {
+      "control": "Bayesian condition violation at p=0.5",
+      "expected_failure": "Equation (9) sum is zero and a nonzero ground-truth DP is not recovered",
+      "condition_9_partial_sum": 0.0,
+      "ground_dp": 0.2,
+      "aggregate_dp": 0.0,
+      "gap_for_every_crowd_size": 0.2,
+      "status": "FAIL_AS_EXPECTED"
+    },
+    "failed_as_expected": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "checker": "independent CSV and proof-certificate checker",
+  "status": "PASS",
+  "failures": [],
+  "rows_checked": 5,
+  "bayes_distinct_from_mv": true,
+  "final_mv_gap": 0.0113028233110547,
+  "final_bayes_gap": 0.0002600524055689224,
+  "proof_steps_checked": 6
+}
