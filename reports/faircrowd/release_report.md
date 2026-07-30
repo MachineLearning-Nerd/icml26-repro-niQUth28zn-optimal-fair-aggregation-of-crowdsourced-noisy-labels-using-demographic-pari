@@ -36,7 +36,7 @@ download and hash/traversal verification. No second Space will be created.
 | Judged Monte Carlo baseline | `orx/judged-monte-carlo-baseline` | C1/C3/C4/C5 pass; C2 BLOCKED | local CPU, 27.438 s script |
 | Exact heterogeneous Bayes verifier | `orx/exact-heterogeneous-bayes-verifier` | all five pass | local CPU, 39.794 s script |
 | Evaluator-visible candidate | `orx/evaluator-visible-release-candidate` | all five plus cumulative checker/controls pass | local CPU, 41.007 s script |
-| Release manifest and blind audit | `orx/release-manifest-and-blind-audit` | pending final unchanged-command regression | estimated one core, under 60 s |
+| Release manifest and blind audit | `orx/release-manifest-and-blind-audit` | all five plus checker/controls pass | local CPU, 30.485 s script |
 
 Scientific winning SHA:
 `10451115e7ef0ba33a07b7b1ea20a5aaca959e8f`.
@@ -90,7 +90,7 @@ records are in `release/blind-audit-round1.json` and
 
 All formal runs used the local backend because each was estimated to require
 one CPU core and finish within five minutes. No GPU was used. Recorded script
-runtimes are 27.438 s, 39.794 s, and 41.007 s before the final release
+runtimes are 27.438 s, 39.794 s, 41.007 s, and 30.485 s through the release
 regression. Hugging Face compute cost is **$0.00**; no HF Job was required.
 
 ## Material command ledger
@@ -116,6 +116,10 @@ orx create-experiment ... --title "Evaluator-visible release candidate" --parent
 orx exp run e815d9aa-3caf-4fff-91f2-d8b5b53f2c0f --backend local
 orx exp wait e815d9aa-3caf-4fff-91f2-d8b5b53f2c0f --timeout 120
 orx logs 6ce67aaa-3b66-4405-9b80-9f041841b194 --bytes 200000
+orx create-experiment ... --title "Release manifest and blind audit" --parent e815d9aa-3caf-4fff-91f2-d8b5b53f2c0f
+orx exp run b96ce9d2-5903-425f-b6a6-57315a06ab64 --backend local
+orx exp wait b96ce9d2-5903-425f-b6a6-57315a06ab64 --timeout 120
+orx logs 347f8580-4c7b-4ae3-98ec-e2d65a2ed81e --bytes 220000
 uv run --frozen python repro/make_report_figures.py
 uvx --from marimo marimo check notebooks/faircrowd_claim2.py
 uv run --frozen marimo export html notebooks/faircrowd_claim2.py -o /tmp/faircrowd_claim2.html
