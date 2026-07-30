@@ -1,0 +1,27 @@
+{
+  "claim_id": "C2",
+  "paper_anchor": "Theorem 3.4; Lemma 3.3 Equations (8) and (9)",
+  "exact_statement": "For phi in {Bayes-optimal, Majority Vote}, under Equation (8) for Majority Vote and Equation (9) for Bayesian Vote, lim_{R->infinity} Delta_DP(Yhat_R^phi) = Delta_DP(Y).",
+  "domain": {
+    "labels": "{0,1}",
+    "sensitive_attribute": "{0,1}",
+    "aggregators": ["Bayes-optimal Equation (4)", "Majority Vote Equation (5)"],
+    "noise_model": "one-coin skills p_r(A,X)",
+    "finite_experiment": "X is empty; annotator votes are conditionally independent"
+  },
+  "quantifiers": {
+    "aggregator": "each phi in the two-element set",
+    "crowd_size": "limit as R tends to infinity",
+    "probability": "conditions hold almost surely"
+  },
+  "acceptance": [
+    "source statement, conditions, and quantifiers are audited",
+    "symbolic derivation from conditional error to DP convergence passes",
+    "heterogeneous group-dependent skills make Bayes and MV disagree with positive probability",
+    "exact finite distributions show both gaps shrinking toward nonzero Delta_DP(Y)=0.2",
+    "Equation (8) is above one and the periodic skill sequence makes Equation (9) diverge",
+    "independent checker exits zero",
+    "homogeneous and no-signal negative controls exit nonzero"
+  ],
+  "verdicts": ["VERIFIED", "FALSIFIED", "BLOCKED"]
+}

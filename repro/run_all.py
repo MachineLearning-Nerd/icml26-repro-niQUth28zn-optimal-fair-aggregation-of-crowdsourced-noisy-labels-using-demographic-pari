@@ -7,6 +7,7 @@ from pathlib import Path
 
 import numpy as np
 
+import claim2_exact
 import core
 
 
@@ -62,48 +63,52 @@ def check_claim_1():
     )
 
 
-def bayes_homogeneous(votes, skill):
-    vote_llr = np.where(
-        votes == 1,
-        np.log(skill / (1 - skill)),
-        np.log((1 - skill) / skill),
-    )
-    return (vote_llr.sum(axis=1) > 0).astype(np.int8)
-
-
 def check_claim_2():
-    sensitive, labels = core.sample_population(40_000, 0.5, Q, seed=2)
-    ground_dp = Q[1] - Q[0]
-    rows = []
-    predictions = {}
-    passed = True
-    for method in ("MajorityVote", "Bayesian"):
-        method_rows = []
-        for crowd_size in (4, 40):
-            skill = 0.75
-            votes = core.annotator_labels(
-                sensitive, labels, np.full(crowd_size, skill), seed=crowd_size
-            )
-            if method == "MajorityVote":
-                prediction = core.majority_vote(votes)
-            else:
-                prediction = bayes_homogeneous(votes, skill)
-            predictions[(method, crowd_size)] = prediction
-            gap = abs(core.delta_dp(prediction, sensitive) - ground_dp)
-            method_rows.append({"crowd_size": crowd_size, "gap": gap})
-        ratio = method_rows[-1]["gap"] / max(method_rows[0]["gap"], 1e-12)
-        passed &= method_rows[-1]["gap"] < 0.03 and ratio < 0.4
-        rows.append({"method": method, "values": method_rows, "ratio": ratio})
-    identical = bool(
-        np.array_equal(predictions[("MajorityVote", 40)], predictions[("Bayesian", 40)])
+    exact, json_path, csv_path = claim2_exact.write_evidence(OUTPUT_DIR)
+    checker = subprocess.run(
+        [os.sys.executable, "repro/check_claim2.py"],
+        capture_output=True,
+        text=True,
+        check=False,
     )
+    controls = {}
+    for control in ("homogeneous", "no-signal"):
+        process = subprocess.run(
+            [os.sys.executable, "repro/claim2_negative_control.py", control],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        controls[control] = {
+            "exit_code": process.returncode,
+            "output": json.loads(process.stdout),
+            "failed_as_expected": process.returncode != 0,
+        }
+    checker_passed = checker.returncode == 0
+    controls_passed = all(control["failed_as_expected"] for control in controls.values())
+    final = exact["rows"][-1]
+    print("CLAIM2_RAW_JSON")
+    print(json.dumps(exact, indent=2))
+    print("CLAIM2_INDEPENDENT_CHECKER")
+    print(checker.stdout)
+    print("CLAIM2_NEGATIVE_CONTROLS")
+    print(json.dumps(controls, indent=2))
     return claim_result(
         "C2",
         "Theorem 3.4",
-        "BLOCKED",
-        {"methods": rows, "bayes_identical_to_mv_at_r40": identical},
-        "The homogeneous p=0.75 setup makes Bayesian vote identical to majority vote; "
-        "this baseline intentionally preserves the live judge's criticism.",
+        "VERIFIED" if checker_passed and controls_passed else "BLOCKED",
+        {
+            "raw_json": str(json_path),
+            "raw_csv": str(csv_path),
+            "final_mv_gap": final["mv_gap"],
+            "final_bayes_gap": final["bayes_gap"],
+            "decision_disagreement_probability": final[
+                "decision_disagreement_probability"
+            ],
+            "independent_checker_exit_code": checker.returncode,
+            "negative_controls": controls,
+        },
+        exact["limitations"],
     )
 
 
@@ -271,7 +276,7 @@ def main():
             for claim in claims
             if claim["claim"] != "C2"
         ),
-        "claim_2_expected_blocked": claims[1]["status"] == "BLOCKED",
+        "claim_2_verified": claims[1]["status"] == "VERIFIED",
     }
     (OUTPUT_DIR / "baseline_results.json").write_text(
         json.dumps(result, indent=2) + "\n"
@@ -279,7 +284,7 @@ def main():
     print("RUN_METADATA_JSON=" + json.dumps(metadata, sort_keys=True))
     print("BASELINE_RESULTS_JSON")
     print(json.dumps(result, indent=2))
-    if not result["all_regressions_pass"] or not result["claim_2_expected_blocked"]:
+    if not result["all_regressions_pass"] or not result["claim_2_verified"]:
         raise SystemExit(1)
 
 
