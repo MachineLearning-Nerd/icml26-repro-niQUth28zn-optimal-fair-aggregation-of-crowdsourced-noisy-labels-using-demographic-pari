@@ -197,6 +197,8 @@ def check_claim_5():
     signal = 1 / (1 + np.exp(-score))
     labels = (rng.random(sample_count) < signal).astype(np.int8)
     posterior = np.clip(signal + rng.normal(0, 0.25, sample_count), 0, 1)
+    unconstrained = (posterior >= 0.5).astype(np.int8)
+    unconstrained_dp_gap = abs(core.delta_dp(unconstrained, sensitive))
     rows = []
     passed = True
     for epsilon in (0.02, 0.05, 0.10, 0.20):
@@ -230,7 +232,7 @@ def check_claim_5():
         "C5",
         "Theorem 4.1",
         "VERIFIED" if passed else "BLOCKED",
-        {"rows": rows},
+        {"rows": rows, "unconstrained_dp_gap": unconstrained_dp_gap},
         "Historical Monte Carlo baseline uses a 121x121 threshold grid, not an exact LP.",
     )
 
@@ -278,13 +280,36 @@ def main():
         ),
         "claim_2_verified": claims[1]["status"] == "VERIFIED",
     }
-    (OUTPUT_DIR / "baseline_results.json").write_text(
+    (OUTPUT_DIR / "cumulative_results.json").write_text(
         json.dumps(result, indent=2) + "\n"
     )
+    checker = subprocess.run(
+        [os.sys.executable, "repro/check_cumulative.py"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    controls = subprocess.run(
+        [os.sys.executable, "repro/cumulative_controls.py"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    checker_passed = checker.returncode == 0
+    controls_failed_as_expected = controls.returncode != 0
     print("RUN_METADATA_JSON=" + json.dumps(metadata, sort_keys=True))
-    print("BASELINE_RESULTS_JSON")
+    print("CUMULATIVE_RESULTS_JSON")
     print(json.dumps(result, indent=2))
-    if not result["all_regressions_pass"] or not result["claim_2_verified"]:
+    print("CUMULATIVE_INDEPENDENT_CHECKER")
+    print(checker.stdout)
+    print("CUMULATIVE_NEGATIVE_CONTROLS")
+    print(controls.stdout)
+    if (
+        not result["all_regressions_pass"]
+        or not result["claim_2_verified"]
+        or not checker_passed
+        or not controls_failed_as_expected
+    ):
         raise SystemExit(1)
 
 
